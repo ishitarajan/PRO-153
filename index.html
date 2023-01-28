@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+
+    <script src="./components/Rotation.js"></script>
+
+  </head>
+
+  <body>
+    
+    <a-scene background="color:#123456">
+
+      <a-entity id="look" camera position="0 2 20"></a-entity>
+
+      <!--Asset Management-->
+      <a-assets timeout="10000">        
+        <a-asset-item
+          id="island-fanatsy"
+          src="./assets/models/fantasy_island/scene.gltf"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="scuba-diver"
+          src="./assets/models/scuba_diver_-_twinset_blue_suit/scene.gltf"
+        ></a-asset-item>
+        
+      </a-assets>
+
+      <!-- Terrain  -->
+      <a-entity
+        id="island"
+        gltf-model="#island-fantasy"
+        position="0 0 0"
+        scale="0.3 0.3 0.3"
+        animation="property: position; to: 0 0 1000;easing:linear; loop: true; dur: 150000"
+        island-rotation-reader
+        
+      >
+      </a-entity>
+
+      <!-- Plane -->
+      <a-entity
+        id="scuba_model"
+        gltf-model="#scuba-diver"
+        position="0 0 15"
+        scale="1 1"
+        rotation="0 90 0"
+        scuba-rotation-reader        
+      >
+      </a-entity>
+
+    </a-scene>
+  </body>
+</html>
